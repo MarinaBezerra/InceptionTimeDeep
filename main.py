@@ -80,6 +80,7 @@ def get_xp_val(xp):
 
 
 ############################################### main
+#root_dir= '/content/drive/MyDrive/Cadeiras/Mestrado/DEEP/'
 root_dir = '/dataset'
 xps = ['use_bottleneck', 'use_residual', 'nb_filters', 'depth',
        'kernel_size', 'batch_size']

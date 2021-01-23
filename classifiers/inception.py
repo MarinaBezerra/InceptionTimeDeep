@@ -108,7 +108,7 @@ class Classifier_INCEPTION:
         return model
 
     def fit(self, x_train, y_train, x_val, y_val, y_true, plot_test_acc=False):
-        devices = device_lib.list_local_devices()
+
         if len(tf.test.gpu_device_name()) == 0:
             print('error no gpu found')
             exit()

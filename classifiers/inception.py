@@ -2,7 +2,7 @@
 import keras
 import numpy as np
 import time
-from tensorflow.python.client import device_lib
+import tensorflow as tf
 
 from utils.utils import save_logs
 from utils.utils import calculate_metrics
@@ -109,7 +109,7 @@ class Classifier_INCEPTION:
 
     def fit(self, x_train, y_train, x_val, y_val, y_true, plot_test_acc=False):
         devices = device_lib.list_local_devices()
-        if 'GPU' not in device_lib.list_local_devices():
+        if len(tf.test.gpu_device_name()) == 0:
             print('error no gpu found')
             exit()
         # x_val and y_val are only used to monitor the test loss and NOT for training

@@ -1,5 +1,2 @@
-Keras==2.2.4
-Keras-Applications==1.0.6
-keras-contrib==2.0.8
-Keras-Preprocessing==1.0.5
-tensorflow
+keras==2.2.4
+tensorflow==1.15.0-rc0

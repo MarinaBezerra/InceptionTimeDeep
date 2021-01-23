@@ -30,9 +30,9 @@ def check_if_file_exits(file_name):
 
 def readucr(filename, delimiter=None):
     if delimiter != None:
-        data = np.loadtxt(os.getcwd() + filename, delimiter=delimiter)
+        data = np.loadtxt(filename, delimiter=delimiter)
     else: 
-        data = np.loadtxt(os.getcwd() + filename)
+        data = np.loadtxt(filename)
     Y = data[:, 0]
     X = data[:, 1:]
     return X, Y

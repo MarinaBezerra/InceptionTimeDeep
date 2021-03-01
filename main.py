@@ -19,7 +19,7 @@ root_dir= '/content/drive/MyDrive/Cadeiras/Mestrado/DEEP'
 #root_dir = '/dataset'
 xps = ['use_bottleneck', 'use_residual', 'nb_filters', 'depth',
        'kernel_size', 'batch_size']
-ARCHIVES_FOLDER = '/content/drive/MyDrive/Cadeiras/Mestrado/DEEP/archives/GAS/'
+ARCHIVES_FOLDER = '/content/drive/MyDrive/Cadeiras/Mestrado/DEEP/archives/GAS'
 GAS_FOLDERS = [ 'Toluene_200', 'Methanol_200', 'Methane_1000', 'Ethylene_500', 'CO_4000', 'CO_1000', 'Butanol_100', 
                 'Benzene_200', 'Ammonia_10000', 'Acetone_2500', 'Acetaldehyde_500']
 GAS_CLASS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -52,7 +52,7 @@ def readnpy_return_train_test():
     x_train = x_train.reshape((x_train.shape[0], x_train.shape[1], 1))
     x_test = x_test.reshape((x_test.shape[0], x_test.shape[1], 1))
 
-  return x_train, y_train, x_test, y_test, y_true, y_true_train
+  return x_train, y_train, x_test, y_test, y_true, nb_classes, y_true_train
 
 def prepare_data():
     x_train = datasets_dict[dataset_name][0]

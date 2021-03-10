@@ -72,7 +72,7 @@ class Classifier_NNE:
                 else:
                     # then compute the predictions
                     curr_y_pred = model.predict(x_test, y_true, x_train, y_train, y_test,
-                                                return_df_metrics=False)
+                                                return_df_metrics=True)
                     keras.backend.clear_session()
 
                     np.save(predictions_file_name, curr_y_pred)

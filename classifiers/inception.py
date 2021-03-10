@@ -107,7 +107,7 @@ class Classifier_INCEPTION:
 
         return model
 
-    def fit(self, x_train, y_train, x_val, y_val, y_true, plot_test_acc=False):
+    def fit(self, x_train, y_train, x_val, y_val, y_true, plot_test_acc=True):
 
         if len(tf.test.gpu_device_name()) == 0:
             print('error no gpu found')
@@ -135,7 +135,7 @@ class Classifier_INCEPTION:
         self.model.save(self.output_directory + 'last_model.hdf5')
 
         y_pred = self.predict(x_val, y_true, x_train, y_train, y_val,
-                              return_df_metrics=False)
+                              return_df_metrics=True)
 
         # save predictions
         np.save(self.output_directory + 'y_pred.npy', y_pred)

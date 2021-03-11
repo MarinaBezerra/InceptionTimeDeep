@@ -12,7 +12,7 @@ from utils.utils import save_test_duration
 class Classifier_INCEPTION:
 
     def __init__(self, output_directory, input_shape, nb_classes, verbose=False, build=True, batch_size=64,
-                 nb_filters=32, use_residual=True, use_bottleneck=True, depth=6, kernel_size=41, nb_epochs=1500):
+                 nb_filters=32, use_residual=True, use_bottleneck=True, depth=6, kernel_size=41, nb_epochs=200):
 
         self.output_directory = output_directory
 
@@ -107,7 +107,7 @@ class Classifier_INCEPTION:
 
         return model
 
-    def fit(self, x_train, y_train, x_val, y_val, y_true, plot_test_acc=True):
+    def fit(self, x_train, y_train, x_val, y_val, y_true, plot_test_acc=False):
 
         if len(tf.test.gpu_device_name()) == 0:
             print('error no gpu found')
@@ -135,7 +135,7 @@ class Classifier_INCEPTION:
         self.model.save(self.output_directory + 'last_model.hdf5')
 
         y_pred = self.predict(x_val, y_true, x_train, y_train, y_val,
-                              return_df_metrics=True)
+                              return_df_metrics=False)
 
         # save predictions
         np.save(self.output_directory + 'y_pred.npy', y_pred)
@@ -150,7 +150,7 @@ class Classifier_INCEPTION:
 
         return df_metrics
 
-    def predict(self, x_test, y_true, x_train, y_train, y_test, return_df_metrics=True):
+    def predict(self, x_test, y_true, x_train, y_train, y_test, return_df_metrics=False):
         start_time = time.time()
         model_path = self.output_directory + 'best_model.hdf5'
         model = keras.models.load_model(model_path)

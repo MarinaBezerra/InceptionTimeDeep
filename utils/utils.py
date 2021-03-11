@@ -193,7 +193,7 @@ def plot_epochs_metric(hist, file_name, metric='loss'):
 
 
 def save_logs(output_directory, hist, y_pred, y_true, duration,
-              lr=True, plot_test_acc=True):
+              lr=True, plot_test_acc=False):
     hist_df = pd.DataFrame(hist.history)
     hist_df.to_csv(output_directory + 'history.csv', index=False)
 

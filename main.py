@@ -20,24 +20,17 @@ root_dir= '/content/drive/MyDrive/Cadeiras/Mestrado/DEEP'
 xps = ['use_bottleneck', 'use_residual', 'nb_filters', 'depth',
        'kernel_size', 'batch_size']
 ARCHIVES_FOLDER = '/content/drive/MyDrive/Cadeiras/Mestrado/DEEP/archives/GAS'
-GAS_FOLDERS = [ 'Toluene_200', 'Methanol_200', 'Methane_1000', 'Ethylene_500', 'CO_4000', 'CO_1000', 'Butanol_100', 
-                'Benzene_200', 'Ammonia_10000', 'Acetone_2500', 'Acetaldehyde_500']
-GAS_CLASS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-BOARD_POSITIONS = ['L1', 'L2', 'L2', 'L4', 'L5', 'L6']
-FINAL_COLUMN_TYPE = { 'class': 'int32', 'mcf1_setpoint': 'float16', 'mcf2_setpoint': 'float16', 'mcf3_setpoint': 'float16', 'mcf1_read': 'float16', 'mcf2_read': 'float16', 'mcf3_read': 'float16', 't': 'float16', 'rh': 'float16', 'b1': 'float16', 'board11': 'float16', 'board12': 'float16', 'board13': 'float16', 'board14': 'float16', 'board15': 'float16', 'board16': 'float16', 'board17': 'float16', 'board18': 'float16', 'b2': 'float16', 'board21': 'float16', 'board22': 'float16', 'board23': 'float16', 'board24': 'float16', 'board25': 'float16', 'board26': 'float16', 'board27': 'float16', 'board28': 'float16', 'b3': 'float16', 'board31': 'float16', 'board32': 'float16', 'board33': 'float16', 'board34': 'float16', 'board35': 'float16', 'board36': 'float16', 'board37': 'float16', 'board38': 'float16', 'b4': 'float16', 
-'board41': 'float16', 'board42': 'float16', 'board43': 'float16', 'board44': 'float16', 'board45': 'float16', 'board46': 'float16', 'board47': 'float16', 'board48': 'float16', 'b5': 'float16', 'board51': 'float16', 'board52': 'float16', 'board53': 'float16', 'board54': 'float16', 'board55': 'float16', 'board56': 'float16', 'board57': 'float16', 'board58': 'float16', 'b6': 'float16', 
-'board61': 'float16', 'board62': 'float16', 'board63': 'float16', 'board64': 'float16', 'board65': 'float16', 'board66': 'float16', 'board67': 'float16', 'board68': 'float16', 'b7': 'float16', 'board71': 'float16', 'board72': 'float16', 'board73': 'float16', 'board74': 'float16', 'board75': 'float16', 'board76': 'float16', 'board77': 'float16', 'board78': 'float16', 'b8': 'float16', 'board81': 'float16', 'board82': 'float16', 'board83': 'float16', 'board84': 'float16', 'board85': 'float16', 'board86': 'float16', 'board87': 'float16', 'board88': 'float16', 'b9': 'float16', 
-'board91': 'float16', 'board92': 'float16', 'board93': 'float16', 'board94': 'float16', 'board95': 'float16', 'board96': 'float16', 'board97': 'float16', 'board98': 'float16'}
 
 
 def readnpy_return_train_test():
-  filename = ARCHIVES_FOLDER + '/cleaned_normalized_256_data.npy'
-  data = np.load(filename)
-  Y = data[:, 0]
-  X = data[:, 1:]
+  filename_data = ARCHIVES_FOLDER + '/cleaned_normalized_L5_00600V060_data.npy'
+  filename_class = ARCHIVES_FOLDER + '/cleaned_normalized_L5_00600V060_data_class.npy'
+  X = np.load(filename_data)
+  Y = np.load(filename_class)
+
   x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = 0.2, stratify=Y)
 
-  nb_classes = 11
+  nb_classes = 10
 
   y_true = y_test.astype(np.int64)
   y_true_train = y_train.astype(np.int64)

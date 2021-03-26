@@ -107,7 +107,7 @@ class Classifier_INCEPTION:
 
         return model
 
-    def fit(self, x_train, y_train, x_val, y_val, y_true, plot_test_acc=False):
+    def fit(self, x_train, y_train, x_val, y_val, y_true, plot_test_acc=True):
 
         if len(tf.test.gpu_device_name()) == 0:
             print('error no gpu found')
@@ -124,7 +124,7 @@ class Classifier_INCEPTION:
         if plot_test_acc:
 
             hist = self.model.fit(x_train, y_train, batch_size=mini_batch_size, epochs=self.nb_epochs,
-                                  verbose=self.verbose, validation_data=(x_val, y_val), callbacks=self.callbacks)
+                                  verbose=self.verbose, validation_split=0.2, callbacks=self.callbacks)
         else:
 
             hist = self.model.fit(x_train, y_train, batch_size=mini_batch_size, epochs=self.nb_epochs,

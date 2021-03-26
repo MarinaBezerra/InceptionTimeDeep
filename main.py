@@ -28,8 +28,12 @@ def readnpy_return_train_test():
   X = np.load(filename_data)
   Y = np.load(filename_class)
 
+  print('input data shape->', X.shape)
+  print('input class shape->', Y.shape)
   x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = 0.2, stratify=Y)
-
+  print('input data shape->', x_train.shape)
+  print('input class shape->', x_test.shape)
+  
   nb_classes = 10
 
   y_true = y_test.astype(np.int64)

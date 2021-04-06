@@ -23,14 +23,16 @@ ARCHIVES_FOLDER = '/content/drive/MyDrive/Cadeiras/Mestrado/DEEP/archives/GAS'
 
 
 def readnpy_return_train_test():
-  filename_data = ARCHIVES_FOLDER + '/cleaned_normalized_L5_00600V060_data.npy'
-  filename_class = ARCHIVES_FOLDER + '/cleaned_normalized_L5_00600V060_data_class.npy'
-  X = np.load(filename_data)
-  Y = np.load(filename_class)
+  filename_train_data = ARCHIVES_FOLDER + '/train_normalized_data.npy'
+  filename_train_data_class = ARCHIVES_FOLDER + '/train_normalized_data_class.npy'
+  filename_test_data = ARCHIVES_FOLDER + '/test_normalized_data.npy'
+  filename_test_data_class = ARCHIVES_FOLDER + '/test_normalized_data_class.npy'
+  x_train = np.load(filename_train_data)
+  y_train = np.load(filename_train_data_class)
+  x_test = np.load(filename_test_data)
+  y_test = np.load(filename_test_data_class)
 
-  print('input data shape->', X.shape)
-  print('input class shape->', Y.shape)
-  x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = 0.2, stratify=Y)
+  #x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = 0.2, stratify=Y)
   print('input data shape->', x_train.shape)
   print('input class shape->', x_test.shape)
   

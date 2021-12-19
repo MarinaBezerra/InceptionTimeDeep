@@ -1,4 +1,4 @@
-import keras
+from tensorflow import keras
 import numpy as np
 from utils.utils import calculate_metrics
 from utils.utils import create_directory
